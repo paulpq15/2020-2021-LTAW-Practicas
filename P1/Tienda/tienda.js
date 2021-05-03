@@ -1,7 +1,7 @@
 const http = require('http');
 
 //-- Definir el puerto a utilizar
-const PUERTO = 8080;
+const PUERTO = 9000;
 
 //-- Crear el servidor. La función de retrollamada de
 //-- atención a las peticiones se define detnro de los
