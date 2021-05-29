@@ -41,16 +41,7 @@ const server = http.createServer((req, res) => {
     
     //-- Lectura del fichero (Asíncrona)
     fs.readFile(filename, function(err, data) {
-        //-- Fichero no encontrado. Devolver mensaje de error
-        if ((err) || filename == "./error.html") {
-            res.writeHead(404, {'Content-Type': 'text/html'});
-            console.log("404 Not Found");
-        } else {
-            // Fichero encontrado OK
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            console.log("200 OK");
-        }
-
+        
         //-- Tipo mime por defecto: html --> TIPO DE ARCHIVO
         var mime = "text/html"
         
@@ -60,8 +51,18 @@ const server = http.createServer((req, res) => {
         }
         
         // CSS
-        if (type_file == "css"){
+        if (type_file == 'css'){
             mime = "text/css";
+        }
+
+        //-- Fichero no encontrado. Devolver mensaje de error
+        if ((err) || filename == "./error.html") {
+            res.writeHead(404, {'Content-Type': mime});
+            console.log("404 Not Found");
+        } else {
+            // Fichero encontrado OK
+            res.writeHead(200, {'Content-Type': mime});
+            console.log("200 OK");
         }
         
         //-- Generar el mensaje de respuesta
