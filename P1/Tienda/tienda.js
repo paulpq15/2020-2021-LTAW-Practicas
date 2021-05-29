@@ -44,11 +44,11 @@ const server = http.createServer((req, res) => {
         //-- Fichero no encontrado. Devolver mensaje de error
         if ((err) || filename == "./error.html") {
             res.writeHead(404, {'Content-Type': 'text/html'});
-            return res.end("404 Not Found");
+            console.log("404 Not Found");
         } else {
             // Fichero encontrado OK
             res.writeHead(200, {'Content-Type': 'text/html'});
-            return res.end("200 OK")
+            console.log("200 OK");
         }
 
         //-- Tipo mime por defecto: html --> TIPO DE ARCHIVO
