@@ -1,0 +1,64 @@
+[
+    {
+        "users": [
+            {
+                "user": "myketowers23",
+                "name": "Miguel Torres",
+                "email": "myketowers23@gmail.com"
+            },
+            {
+                "user": "root",
+                "name": "theroot",
+                "email": "root@gmail.com"
+
+            }
+        ]
+    },
+    {
+        "products": [
+            {
+                "name": "Gorra",
+                "description": "Gorra The North Face color beige",
+                "price": "30€",
+                "stock": 10
+            },
+            {
+                "name": "Gorro",
+                "description": "Gorro de los NETS de la NBA en color negro",
+                "price": "12€",
+                "stock": 15
+            },
+            {
+                "name": "Pescador",
+                "description": "Goro TOOMY JEANS de varios colores muy chulo",
+                "price": "50€",
+                "stock": 5
+            },
+            {
+                "name": "Visera",
+                "description": "Visera Nike perfecta para ir mood cani yatusabe",
+                "price": "20€",
+                "stock": 6
+            }
+        ]
+    },
+    {
+        "orders": [
+            {
+                "name of user": "myketowers23",
+                "shipping address": "Los Ángeles",
+                "card number": 232323,
+                "bag": [
+                    {
+                        "product": "Pescador",
+                        "quantity": 1
+                    },
+                    {
+                        "product": "Visera",
+                        "quantity": 1
+                    }
+                ]
+            }
+        ]
+    }
+]
