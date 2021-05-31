@@ -9,7 +9,7 @@ const socket = io();
 let tono = new Audio('tonomensaje.mp3');
 
 socket.on("message", (msg)=>{
-  display.innerHTML += '<p style="color:blue">' + msg + '</p>';
+  display.innerHTML += '<p style="color:black">' + msg + '</p>';
   tono.play();
 });
 
