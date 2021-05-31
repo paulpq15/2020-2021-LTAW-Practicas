@@ -12,6 +12,17 @@ h3 {
     text-shadow: 2px 2px blue;
 }
 
+#nick {
+    border-radius: 10px;
+    border-color: blue;
+    padding-top: 5px;
+    margin-top: 5px;
+    margin-left: 180px;
+    margin-right: 180px;
+    width: 550px;
+    height: 130px;
+}
+
 #msg_entry {
     text-align: center;
     border-color: blue;
