@@ -54,7 +54,7 @@ let disc_message = ("Un usuario ha abandonado el chat");
 //-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
 //-- Definir el punto de entrada principal de mi aplicación web
 app.get('/', (req, res) => {
-  res.send('Bienvenido al Chat!!!' + '<p><a href="/chat_index.html">Unirse al chat</a></p>');
+  res.sendFile(__dirname + '/chat_index.html');
 });
 
 //-- Esto es necesario para que el servidor le envíe al cliente la
