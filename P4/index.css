@@ -1,0 +1,31 @@
+body {
+    background-color: white;
+}
+
+h1 {
+	text-align: center;
+    padding: 20px;
+    width: 93%;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+#left {
+    float: left;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+#right {
+    float: right;
+    border: 2px solid black;
+    border-radius: 10px;   
+}
+
+#display {
+    background-color: gray;
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    overflow: scroll;
+}
