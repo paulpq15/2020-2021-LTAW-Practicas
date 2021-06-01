@@ -146,3 +146,61 @@ io.on('connect', (socket) => {
 //-- Lanzar el servidor HTTP
 server.listen(PORT);
 console.log("Escuchando en puerto: " + PORT);
+
+//-- Punto de entrada. En cuanto electron está listo,
+//-- ejecuta esta función
+electron.app.on('ready', () => {
+  console.log("Evento Ready!");
+
+  //-- Crear la ventana principal de nuestra aplicación
+  win = new electron.BrowserWindow({
+      width: 600,   //-- Anchura 
+      height: 600,  //-- Altura
+
+      //-- Permitir que la ventana tenga ACCESO AL SISTEMA
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: false
+      }
+  });
+
+  //-- En la parte superior se nos ha creado el menu
+  //-- por defecto
+  //-- Si lo queremos quitar, hay que añadir esta línea
+  //win.setMenuBarVisibility(false)
+  
+  //-- Cargar interfaz gráfica en HTML
+  let interfaz_grafica = "index.html"
+  win.loadFile(interfaz_grafica);
+
+  //-- Obtener elementos de la interfaz
+  version_node = process.versions.node;
+  version_electron = process.versions.electron;
+  version_chrome = process.versions.chrome;
+  arquitectura = process.arch;
+  plataforma = process.platform;
+  directorio = process.cwd();
+  ip_address = ip.address();
+  chat = "chat.html";
+
+   //-- Reagrupar los datos a enviar
+  let data = [version_node, version_electron, version_chrome, arquitectura, plataforma, directorio, ip_address, PUERTO, chat];
+
+  //-- Esperar a que la página se cargue y se muestre
+  //-- y luego enviar el mensaje al proceso de renderizado para que 
+  //-- lo saque por la interfaz gráfica
+  win.on('ready-to-show', () => {
+    win.webContents.send('information', data);
+  });
+
+});
+
+//----- Mensajes recibidos del renderizado --------
+
+//-- Esperar a recibir los mensajes de botón apretado (Test) del proceso de 
+//-- renderizado. Al recibirlos se escribe una cadena en la consola
+electron.ipcMain.handle('test', (event, msg) => {
+  console.log("-> Mensaje: " + msg);
+  //-- Reenviarlo a todos los clientes conectados
+  io.send("-> Mensaje: " + msg);
+});
