@@ -3,9 +3,16 @@ const socket = require('socket.io');
 const http = require('http');
 const express = require('express');
 const colors = require('colors');
+const electron = require('electron');
+const ip = require('ip');
+const process = require('process');
 
 //-- Definimos el puerto que se usará en el chat
 const PORT = 9000;
+
+//-- Variable para acceder a la ventana principal
+//-- Se pone aquí para que sea global al módulo principal
+let win = null;
 
 //-- Creamos una nueva aplicacion web
 const app = express();
@@ -21,6 +28,7 @@ const tiempo = Date.now();
 const fecha = new Date(tiempo);
 
 //-------- VARIABLES
+//-- Definimos la variable de numero de usuarios conectados
 let users_count = 0;
 
 //-------- MENSAJES DEL SERVER
@@ -54,7 +62,7 @@ let disc_message = ("Un usuario ha abandonado el chat");
 //-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
 //-- Definir el punto de entrada principal de mi aplicación web
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/chat_index.html');
+  res.sendFile(__dirname + '/public/main.html');
 });
 
 //-- Esto es necesario para que el servidor le envíe al cliente la
@@ -72,11 +80,17 @@ io.on('connect', (socket) => {
     //-- Incrementamos el numero de usuarios conectados
     users_count += 1;
 
+    //-- Enviar numero de usuarios al renderer
+    win.webContents.send('users', users_count);
+
     //-- Enviar mensaje de bienvenida al usuario
     socket.send(welc_message);
 
     //-- Enviar mensaje de nuevo usuario a todos los usuarios
     io.send(conec_message);
+
+    //-- Enviar al render mensaje de conexion
+    win.webContents.send('msg_client', conec_message);
   
     //-- Evento de desconexión
     socket.on('disconnect', function(){
@@ -84,8 +98,14 @@ io.on('connect', (socket) => {
       //-- Decrementamos el numero de usuarios conectados
       users_count -= 1;
 
+      //-- Enviar numero de usuarios al renderer
+      win.webContents.send('users', users_count);
+
       //-- Enviar mensaje de nuevo usuario a todos los usuarios
       io.send(disc_message);
+
+      //-- Enviar al render mensaje de desconexion
+      win.webContents.send('msg_client', disc_message);
 
     });  
   
