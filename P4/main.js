@@ -147,6 +147,8 @@ io.on('connect', (socket) => {
 server.listen(PORT);
 console.log("Escuchando en puerto: " + PORT);
 
+//-- Electron-------
+
 //-- Punto de entrada. En cuanto electron está listo,
 //-- ejecuta esta función
 electron.app.on('ready', () => {
@@ -154,8 +156,8 @@ electron.app.on('ready', () => {
 
   //-- Crear la ventana principal de nuestra aplicación
   win = new electron.BrowserWindow({
-      width: 600,   //-- Anchura 
-      height: 600,  //-- Altura
+      width: 660,   //-- Anchura 
+      height: 660,  //-- Altura
 
       //-- Permitir que la ventana tenga ACCESO AL SISTEMA
       webPreferences: {
