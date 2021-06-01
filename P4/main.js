@@ -163,11 +163,6 @@ electron.app.on('ready', () => {
         contextIsolation: false
       }
   });
-
-  //-- En la parte superior se nos ha creado el menu
-  //-- por defecto
-  //-- Si lo queremos quitar, hay que añadir esta línea
-  //win.setMenuBarVisibility(false)
   
   //-- Cargar interfaz gráfica en HTML
   let interfaz_grafica = "index.html"
@@ -184,7 +179,7 @@ electron.app.on('ready', () => {
   chat = "chat.html";
 
    //-- Reagrupar los datos a enviar
-  let data = [version_node, version_electron, version_chrome, arquitectura, plataforma, directorio, ip_address, PUERTO, chat];
+  let data = [version_node, version_electron, version_chrome, arquitectura, plataforma, directorio, ip_address, PORT, chat];
 
   //-- Esperar a que la página se cargue y se muestre
   //-- y luego enviar el mensaje al proceso de renderizado para que 
