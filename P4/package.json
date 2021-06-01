@@ -1,0 +1,34 @@
+{
+    "name": "mi-electron-chat-app",
+    "description": "Práctica 4: Aplicación de chat utilizando electron",
+    "version": "0.1.0",
+    "main": "main.js",
+    "author": {
+        "name": "Paul Pico"
+    },
+    "homepage": "",
+    "license": "LGPL",
+    "scripts": {
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder",
+        "postinstall": "electron-builder install-app-deps"
+    },
+    "build": {
+        "appId": "mi-electron-chat-app-1-id",
+        "linux": {
+            "target": [
+                "AppImage"
+            ],
+            "category": "Utility"
+        },
+        "win": {
+            "target": [
+                "NSIS"
+            ]
+        }
+    },
+    "devDependencies": {
+        "electron": "^12.0.6",
+    }
+}
