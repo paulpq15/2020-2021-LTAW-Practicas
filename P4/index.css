@@ -10,10 +10,15 @@ h1 {
     border-radius: 10px;
 }
 
+h2 {
+    font-size: 20px;
+}
+
 #left {
     float: left;
     border: 2px solid black;
     border-radius: 10px;
+    background-color: lightskyblue;
 }
 
 #right {
@@ -23,7 +28,7 @@ h1 {
 }
 
 #display {
-    background-color: gray;
+    background-color: lightgray;
     width: 200px;
     height: 100px;
     border: 1px solid black;

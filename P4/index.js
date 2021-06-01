@@ -22,8 +22,8 @@ electron.ipcRenderer.on('information', (event, message) => {
 
     //-- Extraemos cada dato
     version_node.textContent = message[0];
-    version_chrome.textContent = message[1];
-    version_electron.textContent = message[2];
+    version_electron.textContent = message[1];
+    version_chrome.textContent = message[2];
     arquitectura.textContent = message[3];
     plataforma.textContent = message[4];
     directorio.textContent = message[5]
