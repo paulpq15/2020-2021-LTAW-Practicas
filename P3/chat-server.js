@@ -21,7 +21,7 @@ const tiempo = Date.now();
 const fecha = new Date(tiempo);
 
 //-------- VARIABLES
-var users_count = 0;
+let users_count = 0;
 
 //-------- MENSAJES DEL SERVER
 //-- Para el recurso '/help'
@@ -99,7 +99,7 @@ io.on('connect', (socket) => {
             socket.send(msg);
         }else if (msg == '/list'){
             console.log("Devuelve el número de usuarios conectados");
-            msg = list_message + user_count;
+            msg = list_message + users_count;
             socket.send(msg);
         }else if (msg == '/hello'){
             console.log("El servidor devuelve el saludo");

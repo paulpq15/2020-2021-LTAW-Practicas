@@ -12,13 +12,6 @@ h3 {
     text-shadow: 2px 2px blue;
 }
 
-#msg_nick{
-    text-align: center;
-    border-color: blue;
-    width: 50%;
-    height: 30px;
-}
-
 #msg_entry {
     text-align: center;
     border-color: blue;
